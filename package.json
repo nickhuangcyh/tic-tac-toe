@@ -1,0 +1,30 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "一個簡潔美觀的井字棋遊戲，使用純 HTML、CSS 和 JavaScript 開發。",
+  "main": "script.js",
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5",
+    "jsdom": "^26.1.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickhuangcyh/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nickhuangcyh/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/nickhuangcyh/tic-tac-toe#readme"
+}
