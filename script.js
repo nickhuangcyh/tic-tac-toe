@@ -31,12 +31,18 @@ class TicTacToe {
     // 添加事件監聽器
     addEventListeners() {
         // 為每個格子添加點擊事件
-        this.cells.forEach((cell, index) => {
-            cell.addEventListener('click', () => this.handleCellClick(index));
-        });
+        if (this.cells) {
+            this.cells.forEach((cell, index) => {
+                if (cell) {
+                    cell.addEventListener('click', () => this.handleCellClick(index));
+                }
+            });
+        }
         
         // 重新開始按鈕事件
-        this.resetButton.addEventListener('click', () => this.resetGame());
+        if (this.resetButton) {
+            this.resetButton.addEventListener('click', () => this.resetGame());
+        }
     }
     
     // 處理格子點擊
@@ -56,15 +62,19 @@ class TicTacToe {
     
     // 更新格子顯示
     updateCellDisplay(index) {
-        const cell = this.cells[index];
-        cell.textContent = this.currentPlayer;
-        cell.setAttribute('data-player', this.currentPlayer);
-        cell.classList.add('filled');
-        
-        // 添加放置動畫
-        cell.style.animation = 'none';
-        cell.offsetHeight; // 觸發重排
-        cell.style.animation = 'cellPlace 0.3s ease-out';
+        const cell = this.cells && this.cells[index];
+        if (cell) {
+            cell.textContent = this.currentPlayer;
+            cell.setAttribute('data-player', this.currentPlayer);
+            if (cell.classList) {
+                cell.classList.add('filled');
+            }
+            
+            // 添加放置動畫
+            cell.style.animation = 'none';
+            cell.offsetHeight; // 觸發重排
+            cell.style.animation = 'cellPlace 0.3s ease-out';
+        }
     }
     
     // 檢查遊戲結果
@@ -129,7 +139,7 @@ class TicTacToe {
     
     // 更新遊戲狀態顯示
     updateGameStatus() {
-        if (this.gameActive) {
+        if (this.gameActive && this.gameStatus) {
             this.gameStatus.textContent = `Player ${this.currentPlayer}'s turn`;
             this.gameStatus.style.color = this.currentPlayer === 'X' ? '#e74c3c' : '#3498db';
         }
@@ -137,13 +147,17 @@ class TicTacToe {
     
     // 勝利慶祝動畫
     celebrateWin() {
-        const container = document.querySelector('.container');
-        container.style.animation = 'celebrate 0.8s ease-in-out';
-        
-        // 重置動畫
-        setTimeout(() => {
-            container.style.animation = '';
-        }, 800);
+        if (typeof document !== 'undefined' && document.querySelector) {
+            const container = document.querySelector('.container');
+            if (container) {
+                container.style.animation = 'celebrate 0.8s ease-in-out';
+                
+                // 重置動畫
+                setTimeout(() => {
+                    container.style.animation = '';
+                }, 800);
+            }
+        }
     }
     
     // 重新開始遊戲
@@ -215,6 +229,13 @@ style.textContent = `
 document.head.appendChild(style);
 
 // 初始化遊戲
-document.addEventListener('DOMContentLoaded', () => {
-    new TicTacToe();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new TicTacToe();
+    });
+}
+
+// 支持 Node.js 模組導出以供測試使用
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { TicTacToe };
+}
