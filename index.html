@@ -3,33 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>✨ 迪士尼魔法井字棋 ✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Tic Tac Toe</h1>
+    <!-- 魔法星星背景裝飾 -->
+    <div class="magic-stars"></div>
+    
+    <div class="disney-container">
+        <header class="disney-header">
+            <h1 class="disney-title">✨ 迪士尼魔法井字棋 ✨</h1>
+            <p class="disney-subtitle">歡迎來到迪士尼魔法世界！🏰</p>
         </header>
         
-        <main>
-            <div class="game-info">
-                <div id="game-status">Player X's turn</div>
-                <button id="reset-btn" class="reset-button">重新開始</button>
+        <main class="disney-main">
+            <!-- 玩家顯示區域 -->
+            <div class="disney-players">
+                <div class="player-card active" id="player-minnie">
+                    <div class="player-avatar">🎀</div>
+                    <div class="player-name">米妮</div>
+                    <div class="player-symbol">❤️</div>
+                </div>
+                <div class="vs-text">VS</div>
+                <div class="player-card" id="player-donald">
+                    <div class="player-avatar">🦆</div>
+                    <div class="player-name">唐老鴨</div>
+                    <div class="player-symbol">⭐</div>
+                </div>
+            </div>
+
+            <!-- 遊戲狀態顯示 -->
+            <div class="disney-game-info">
+                <div id="game-status" class="disney-status">米妮的回合 ✨</div>
+                <button id="reset-btn" class="disney-reset-button">🎪 重新開始魔法</button>
             </div>
             
-            <div class="game-board" id="game-board">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
+            <!-- 迪士尼魔法棋盤 -->
+            <div class="disney-game-board" id="game-board">
+                <div class="disney-cell" data-index="0"></div>
+                <div class="disney-cell" data-index="1"></div>
+                <div class="disney-cell" data-index="2"></div>
+                <div class="disney-cell" data-index="3"></div>
+                <div class="disney-cell" data-index="4"></div>
+                <div class="disney-cell" data-index="5"></div>
+                <div class="disney-cell" data-index="6"></div>
+                <div class="disney-cell" data-index="7"></div>
+                <div class="disney-cell" data-index="8"></div>
+            </div>
+
+            <!-- 遊戲統計面板 -->
+            <div class="disney-stats">
+                <div class="stat-item">
+                    <span class="stat-label">🏆 米妮勝利</span>
+                    <span class="stat-value" id="minnie-wins">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">👫 平局</span>
+                    <span class="stat-value" id="draws">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">🏆 唐老鴨勝利</span>
+                    <span class="stat-value" id="donald-wins">0</span>
+                </div>
             </div>
         </main>
+
+        <!-- 魔法效果容器 -->
+        <div class="magic-effects" id="magic-effects"></div>
     </div>
     
     <script src="script.js"></script>

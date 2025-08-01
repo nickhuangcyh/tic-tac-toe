@@ -5,8 +5,10 @@
       "Bash(mkdir:*)",
       "Bash(npm install)",
       "Bash(npm test)",
-      "Bash(npm run test:coverage:*)"
+      "Bash(npm run test:coverage:*)",
+      "Bash(python3:*)"
     ],
     "deny": []
-  }
+  },
+  "$schema": "https://json.schemastore.org/claude-code-settings.json"
 }
