@@ -81,7 +81,25 @@ const handleRestartGame = () => {
     });
 };
 
+const resetGameState = () => {
+    gameActive = true;
+    currentPlayer = 'X';
+    gameState = ['', '', '', '', '', '', '', '', ''];
+    gameStatus.textContent = `It's ${currentPlayer}'s turn`;
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.classList.remove('x', 'o', 'winning-cell');
+    });
+}
+
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 restartButton.addEventListener('click', handleRestartGame);
 
 gameStatus.textContent = `It's ${currentPlayer}'s turn`;
+
+module.exports = {
+    handleCellClick,
+    handleResultValidation,
+    handleRestartGame,
+    resetGameState
+};
